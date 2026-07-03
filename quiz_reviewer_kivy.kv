@@ -1,0 +1,159 @@
+<QuestionScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            
+            Label:
+                text: "复习库"
+                font_size: dp(22)
+                font_bold: True
+            
+            Label:
+                id: mode_label
+                text: ""
+                font_size: dp(14)
+                color: [0, 0, 1, 1]
+        
+        BoxLayout:
+            size_hint_y: None
+            height: dp(45)
+            
+            Spinner:
+                id: file_spinner
+                text: "选择文件"
+                values: []
+                size_hint_x: 0.6
+                on_text: root.load_file(self, self.text)
+            
+            Button:
+                text: "刷新"
+                size_hint_x: 0.2
+                on_release: root.refresh_files()
+        
+        BoxLayout:
+            size_hint_y: None
+            height: dp(35)
+            
+            Label:
+                text: root.progress_text
+                font_size: dp(14)
+            
+            Label:
+                text: root.wrong_text
+                font_size: dp(14)
+                color: [0.9, 0, 0, 1]
+            
+            Label:
+                text: root.score_text
+                font_size: dp(14)
+        
+        ScrollView:
+            BoxLayout:
+                id: question_box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                
+                Label:
+                    text: root.question_text
+                    font_size: dp(17)
+                    size_hint_y: None
+                    height: self.texture_size[1] + 20
+                    text_size: self.width, None
+        
+        ScrollView:
+            BoxLayout:
+                id: options_box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 5
+        
+        Label:
+            text: root.result_text
+            font_size: dp(16)
+            color: root.result_color
+            size_hint_y: None
+            height: dp(40)
+            bold: True
+        
+        Button:
+            id: confirm_btn
+            text: "确认答案"
+            size_hint_y: None
+            height: dp(55)
+            font_size: dp(18)
+            background_color: [0.2, 0.6, 1, 1]
+            color: [1, 1, 1, 1]
+            on_release: root.confirm_answer()
+        
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: 5
+            
+            Button:
+                id: prev_btn
+                text: "上一题"
+                font_size: dp(14)
+                background_color: [0.8, 0.8, 0.8, 1]
+                on_release: root.prev_question()
+            
+            Button:
+                id: next_btn
+                text: "下一题"
+                font_size: dp(14)
+                background_color: [0.8, 0.8, 0.8, 1]
+                on_release: root.next_question()
+            
+            Button:
+                id: overview_btn
+                text: "全览"
+                font_size: dp(14)
+                background_color: [0.8, 0.8, 0.8, 1]
+                on_release: root.show_overview()
+            
+            Button:
+                text: "重新开始"
+                font_size: dp(14)
+                background_color: [0.8, 0.8, 0.8, 1]
+                on_release: root.restart_quiz()
+            
+            Button:
+                id: review_btn
+                text: "错题重做"
+                font_size: dp(14)
+                background_color: [0.8, 0.8, 0.8, 1]
+                on_release: root.start_review()
+
+<OverviewScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            
+            Label:
+                id: info_label
+                text: ""
+                font_size: dp(18)
+            
+            Button:
+                text: "返回"
+                size_hint_x: 0.25
+                on_release: root.go_back()
+        
+        ScrollView:
+            BoxLayout:
+                id: question_list
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 5
