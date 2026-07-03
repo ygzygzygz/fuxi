@@ -1,0 +1,19 @@
+- name: Android App size difference
+  uses: microsoft/android-app-size-diff@v1.0.5
+  with:
+    # Path to base apk. This is the app before changes
+    baseAppPath: # default is base.apk
+    # Label to use for the base app in the report
+    baseAppLabel: # optional, default is Base APK
+    # Path to target apk. This is the app after changes
+    targetAppPath: # default is target.apk
+    # Label to use for the target app in the report
+    targetAppLabel: # optional, default is Target APK
+    # Output file where comparision summary should be written to
+    summaryOutputPath: # default is summary.md
+    # A comma seperated list of size metrics to include in the summary. Possible values are `apkSize`, `installSize`, `dexFiles`, `arscFile`, `nativeLibs`
+    metrics: # optional, default is apkSize, installSize, dexFiles, arscFile, nativeLibs
+    # A comma seperated list of thresholds for each of the metrics in bytes. If this is empty, no thresholding will apply. When this is not empty, the task will fail when any of the given thresholds are crossed
+    thresholds: # optional, default is 
+    # Set to `false` to disable telemetry
+    telemetryEnabled: # optional, default is true
